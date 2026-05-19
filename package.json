@@ -1,0 +1,183 @@
+{
+  "name": "gitmoji",
+  "displayName": "Gitmoji",
+  "version": "1.0.0",
+  "publisher": "tongwudi",
+  "categories": [
+    "Other"
+  ],
+  "description": "一个帮助你在Git提交时快速添加规范前缀的VSCode插件。",
+  "keywords": [
+    "git",
+    "commit",
+    "prefix",
+    "emoji"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tongwudi/gitmoji"
+  },
+  "bugs": {
+    "url": "https://github.com/tongwudi/gitmoji/issues"
+  },
+  "homepage": "https://github.com/tongwudi/gitmoji#readme",
+  "main": "out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "category": "Gitmoji",
+        "command": "gitmoji.configure",
+        "title": "配置前缀映射",
+        "description": "configure prefix mapping"
+      },
+      {
+        "category": "Gitmoji",
+        "command": "gitmoji.addPrefix",
+        "title": "添加规范前缀",
+        "description": "add prefix to commit message",
+        "icon": {
+          "dark": "images/icon.svg",
+          "light": "images/icon_light.svg"
+        }
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "gitmoji.addPrefix",
+          "when": "scmProvider == git",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "gitmoji.addPrefix",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Gitmoji",
+      "properties": {
+        "gitmoji.prefixes": {
+          "type": "array",
+          "default": [
+            {
+              "prefix": "feat",
+              "emoji": "✨",
+              "description": "新功能"
+            },
+            {
+              "prefix": "fix",
+              "emoji": "🐛",
+              "description": "修复bug"
+            },
+            {
+              "prefix": "docs",
+              "emoji": "📝",
+              "description": "文档变更"
+            },
+            {
+              "prefix": "style",
+              "emoji": "💄",
+              "description": "样式变更"
+            },
+            {
+              "prefix": "patch",
+              "emoji": "🩹",
+              "description": "小修复"
+            },
+            {
+              "prefix": "refactor",
+              "emoji": "♻️",
+              "description": "代码重构"
+            },
+            {
+              "prefix": "test",
+              "emoji": "✅",
+              "description": "测试变更"
+            },
+            {
+              "prefix": "chore",
+              "emoji": "🎉",
+              "description": "其他变更"
+            },
+            {
+              "prefix": "perf",
+              "emoji": "⚡️",
+              "description": "性能优化"
+            },
+            {
+              "prefix": "tag",
+              "emoji": "🔖",
+              "description": "标签变更"
+            },
+            {
+              "prefix": "init",
+              "emoji": "🎉",
+              "description": "初始化"
+            },
+            {
+              "prefix": "security",
+              "emoji": "🔒",
+              "description": "安全变更"
+            },
+            {
+              "prefix": "ci",
+              "emoji": "👷",
+              "description": "CI/CD"
+            },
+            {
+              "prefix": "build",
+              "emoji": "🏗️",
+              "description": "构建变更"
+            },
+            {
+              "prefix": "revert",
+              "emoji": "⏪️",
+              "description": "回滚变更"
+            }
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "prefix"
+            ],
+            "properties": {
+              "prefix": {
+                "type": "string"
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "配置前缀映射"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc",
+    "watch": "tsc --watch",
+    "lint": "eslint . --ext .ts --fix",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.6",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
+    "eslint": "^10.3.0",
+    "typescript": "^6.0.3"
+  }
+}
